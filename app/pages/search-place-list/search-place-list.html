@@ -4,13 +4,15 @@
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAR3UXtHOtAPkCzicBsVPRkO6AzjSoKt0A&amp;libraries=places"></script> 
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAR3UXtHOtAPkCzicBsVPRkO6AzjSoKt0A&amp;libraries=places"></script>
 <ion-navbar *navbar>
   <ion-title>SearchPlaceList</ion-title>
 </ion-navbar>
 
 <ion-content padding class="search-place-list">
-
+  <ion-list>
+    <!-- <ion-item *ngFor="#place of places">{{that.places}}</ion-item>       -->
+  </ion-list>
   <div id="map" style="display: none;"></div>
 
 </ion-content>

@@ -14,18 +14,20 @@ import {Inject} from 'angular2/core';
 })
 
 export class SearchPlaceListPage {
-  private places: any;
+  private places: Array<String>;
   private map: any;
 
   constructor(private nav: NavController) {
     this.nav = nav;
     this.places = [];
+    console.log('constructorPlaces', this.places);
     this.loadSearchPlacesList();
     this.map = null;
+    console.log('constructorPlaces', this.places);
   }
 
   loadSearchPlacesList(){
-    let that = this;
+    this.places = [];
 
     navigator.geolocation.getCurrentPosition(function(position){
       let latitude = position.coords.latitude
@@ -36,7 +38,7 @@ export class SearchPlaceListPage {
       console.log("Latitude: ", latitude);
       console.log("Longitude: ", longitude);
       console.log("Coordinates: ", coordinates);
-      that.map = new google.maps.Map(document.getElementById('map'), {
+      this.map = new google.maps.Map(document.getElementById('map'), {
         center: MyLoc,
         zoom: 15,
       });
@@ -55,10 +57,15 @@ export class SearchPlaceListPage {
             let placeInfo = {
               name: results[i].name
             }
-            console.log(placeInfo.name);
+            this.places.push(placeInfo.name);
+            // this.places = that.places.push(placeInfo.name);
           }
         }
+        console.log("this.places after the loop");
+        console.log(this.places);
       });
+      console.log("this.places after if");
+      console.log(this.places);
     });
   };
 
